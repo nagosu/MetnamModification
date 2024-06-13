@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Web Page</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      ((g) => {
+        var h,
+          a,
+          k,
+          p = "The Google Maps JavaScript API",
+          c = "google",
+          l = "importLibrary",
+          q = "__ib__",
+          m = document,
+          b = window;
+        b = b[c] || (b[c] = {});
+        var d = b.maps || (b.maps = {}),
+          r = new Set(),
+          e = new URLSearchParams(),
+          u = () =>
+            h ||
+            (h = new Promise(async (f, n) => {
+              await (a = m.createElement("script"));
+              e.set("libraries", [...r] + "");
+              for (k in g)
+                e.set(
+                  k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()),
+                  g[k]
+                );
+              e.set("callback", c + ".maps." + q);
+              a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+              d[q] = f;
+              a.onerror = () => (h = n(Error(p + " could not load.")));
+              a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+              m.head.append(a);
+            }));
+        d[l]
+          ? console.warn(p + " only loads once. Ignoring:", g)
+          : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+      })({
+        key: "AIzaSyAzh2QLJh_B4ry708NfrIBNpPARrDgWczs",
+        v: "weekly",
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="image">
+          <img src="./images/mock_up_background.png" alt="지도 배경 사진" />
+          <div class="popup">
+            <div class="popup-top">
+              <div class="space-between">
+                <div class="text-row">
+                  <button
+                    class="lang-button active"
+                    onclick="switchLang(this, 'ko')"
+                  >
+                    Kor
+                  </button>
+                  <button class="lang-button" onclick="switchLang(this, 'en')">
+                    Eng
+                  </button>
+                </div>
+                <div class="icon-row">
+                  <i class="material-icons icon-medium">ios_share</i>
+                  <i class="material-icons icon-medium">bookmark_added</i>
+                </div>
+              </div>
+
+              <p id="placeName" data-translate="placeName"></p>
+            </div>
+            <div class="popup-middle">
+              <div class="tabs">
+                <button
+                  class="tablink"
+                  onclick="openTab(event, 'Tab1')"
+                  data-translate="tab_place"
+                >
+                  장소소개
+                </button>
+                <button
+                  class="tablink"
+                  onclick="openTab(event, 'Tab2')"
+                  data-translate="tab_menu"
+                >
+                  메뉴
+                </button>
+                <button
+                  class="tablink"
+                  onclick="openTab(event, 'Tab3')"
+                  data-translate="tab_map"
+                >
+                  지도
+                </button>
+              </div>
+              <div id="Tab1" class="tabcontent">
+                <div class="scroll-container" id="scrollContainer"></div>
+                <div class="info-container">
+                  <div class="info-item space-between">
+                    <div class="row">
+                      <i class="material-icons icon-small">food_bank</i>
+                      <p
+                        id="menuCategory"
+                        class="text-small"
+                        data-translate="menuCategory"
+                      ></p>
+                    </div>
+                    <div class="row">
+                      <i class="material-icons icon-small">bookmark_added</i>
+                      <p class="text-small">0</p>
+                    </div>
+                    <div class="row">
+                      <i class="material-icons icon-small">star</i>
+                      <p class="text-small">0</p>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="material-icons icon-small">map</i>
+                    <p
+                      id="address"
+                      class="text-small"
+                      data-translate="address"
+                    ></p>
+                  </div>
+                  <div class="center text-small">
+                    <p
+                      id="editorialSummary"
+                      data-translate="editorialSummary"
+                    ></p>
+                  </div>
+                  <div class="info-item recommand">
+                    <i class="material-icons icon-small">thumb_up</i>
+                    <p
+                      id="recommand"
+                      class="text-small"
+                      data-translate="recommand"
+                    ></p>
+                  </div>
+                  <div class="info-item phone">
+                    <i class="material-icons icon-small">phone</i>
+                    <p id="tel" class="text-small" data-translate="tel"></p>
+                  </div>
+                  <div class="info-item open-hours">
+                    <i class="material-icons icon-small">access_time</i>
+                    <p
+                      id="openHours"
+                      class="text-small"
+                      data-translate="openHours"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+              <div id="Tab2" class="tabcontent">
+                <ul id="menuList"></ul>
+              </div>
+              <div id="Tab3" class="tabcontent">
+                <div id="map" style="height: 400px; width: 100%"></div>
+              </div>
+            </div>
+            <div class="popup-bottom">
+              <p data-translate="button">맛남 만들기</p>
+            </div>
+          </div>
+        </div>
+        <div class="text">
+          <div class="space-between">
+            <div class="row-gap">
+              <i class="material-icons icon-medium">ios_share</i>
+              <p class="orange-text">Share link</p>
+            </div>
+            <div class="row-gap-2">
+              <p
+                class="static-lang-button"
+                onclick="switchLangStaticContent(this, 'ko')"
+              >
+                Kor
+              </p>
+              <p
+                class="static-lang-button"
+                onclick="switchLangStaticContent(this, 'en')"
+              >
+                Eng
+              </p>
+            </div>
+          </div>
+          <div>
+            <p class="title" static-translate="title">
+              입맛취저 친구들과, 부담없는 맛집여행!
+            </p>
+            <p class="description" static-translate="description">
+              가끔은, 근처 친구들과 식사나 커피도 낭만있지 않을까 생각했어요!<br />
+              그래서 맛남을 만들었고, 여러분의 의견을 기다립니다.<br />
+              맛집도 같이가고, 입맛 맞는 친구들도 만들어봐요!<br /><br />
+              외국 친구들과 맛난 식사도 가능!<br />동네 & 해외 맛친 모두
+              함께하는, 맛남
+            </p>
+          </div>
+          <img
+            src="./images/matnam_logo.png"
+            style="margin-top: 76px"
+            width="190"
+          />
+          <div class="row" style="margin-top: 114px; gap: 33px">
+            <a href="https://apps.apple.com/kr/app/id6471390373">
+              <img src="./images/app_store_logo.png" width="221" />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.gourmeet.metnam"
+            >
+              <img src="./images/google_play_logo.png" width="221" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

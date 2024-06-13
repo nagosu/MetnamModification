@@ -1,0 +1,381 @@
+/* 기본 스타일 설정 */
+
+@font-face {
+  font-family: "Cafe24Ohsquare";
+  src: url("./font/Cafe24Ohsquare-v2.0.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff9ed; /* 화면 뒤에 흰색 배경 제거 */
+}
+
+main {
+  background-image: url("./images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start; /* 좌측 정렬 */
+  align-items: center;
+  height: 100vh; /* 전체 화면 높이 */
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: stretch; /* 자식 요소가 같은 높이를 가지도록 설정 */
+  width: 100%; /* container가 전체 너비를 사용하도록 설정 */
+  margin-left: 80px;
+  background-color: transparent; /* 배경색 투명하게 설정 */
+}
+
+.popup {
+  position: absolute; /* 절대 위치로 설정 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /* 중앙 정렬 */
+  width: 90%;
+  max-width: 347px;
+  max-height: 727px;
+  background-color: rgba(255, 255, 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  word-wrap: break-word; /* 긴 단어가 줄 바꿈되도록 설정 */
+  border-radius: 15px; /* 팝업 전체에 radius 설정 */
+  overflow: hidden; /* 내부 요소가 둥근 모서리 밖으로 나오지 않도록 설정 */
+}
+
+.popup-top,
+.popup-bottom {
+  background-color: rgba(252, 180, 43);
+  color: white;
+  padding: 10px;
+}
+
+.popup-middle {
+  background-color: white;
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  max-height: 520px; /* 최대 높이를 설정하여 스크롤 활성화 */
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #ddd; /* 하단 구분선 추가 */
+}
+
+.tablink {
+  flex: 1; /* 동일한 너비로 설정 */
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  color: gray;
+  height: 35px;
+  font-size: 14px;
+  outline: none;
+  transition: color 0.3s, border-bottom 0.3s; /* 색상과 하단 구분선에 대한 전환 효과 */
+}
+
+.tablink:hover {
+  color: #fcb42b; /* 마우스 호버시 색상 변경 */
+}
+
+.tablink.active {
+  color: #fcb42b;
+  border-bottom: 3px solid #fcb42b; /* 활성화된 탭의 하단 구분선 */
+}
+
+.tabcontent {
+  display: none;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  width: 300px; /* 기본 너비를 설정 */
+}
+
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 비율을 유지 */
+  overflow: hidden;
+  background: #000; /* 비디오/이미지 로드 전 배경색 설정 */
+}
+
+.aspect-ratio img,
+.aspect-ratio iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.popup-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  font-size: 18px;
+}
+
+.popup-bottom {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 18px;
+}
+
+.image {
+  position: relative;
+  max-width: 416px;
+  width: 100%; /* 이미지 클래스가 가득 차도록 설정 */
+  overflow: hidden; /* 팝업이 이미지를 벗어나지 않도록 설정 */
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  margin-left: 84px;
+  margin-right: 30px;
+  flex-direction: column;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column; /* 수직 방향으로 배치 */
+  margin: 10px;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  align-items: left;
+}
+
+.info-item i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.info-item p {
+  margin: 0 10px 0 0; /* 아이콘 사이 간격을 조정 */
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between; /* 요소를 좌우로 배치 */
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row-gap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fcb42b;
+}
+
+.row-gap-2 {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.center {
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: auto;
+}
+
+.center p {
+  margin: 0; /* p 요소의 기본 margin 제거 */
+  padding: 0; /* padding도 제거 */
+}
+
+/* 크기 조정을 위한 클래스 */
+.icon-large {
+  font-size: 32px;
+}
+
+.text-large {
+  font-size: 18px;
+}
+
+.icon-medium {
+  font-size: 24px !important;
+}
+
+.text-medium {
+  font-size: 16px;
+}
+
+.icon-small {
+  font-size: 16px !important;
+  color: #fcb42b;
+}
+
+.text-small {
+  font-size: 12px;
+  color: grey;
+  text-align: left;
+}
+
+.menu-item {
+  margin: 10px;
+  list-style-type: none; /* 앞에 점을 없앰 */
+  text-align: left;
+  gap: 15px;
+}
+
+.menu-item .name {
+  display: block; /* 블록 요소로 처리 */
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.menu-item .price {
+  display: block; /* 블록 요소로 처리 */
+  color: gray;
+  font-size: 14px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.text-row {
+  display: flex;
+  gap: 10px; /* 요소 간의 간격을 설정 */
+}
+
+.text-row p {
+  margin: 0; /* p 태그의 상하 여백을 없앰 */
+}
+
+.icon-row {
+  display: flex;
+  gap: 10px; /* 아이콘 간의 간격을 설정 */
+}
+
+.lang-button {
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: white;
+  color: #fcb42b;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.lang-button.active {
+  background-color: #fcb42b;
+  color: white;
+}
+
+.lang-button:hover {
+  background-color: #fcb42b;
+  color: white;
+}
+
+.orange-text {
+  font-size: 22px;
+  color: #fcb42b;
+}
+
+.title {
+  font-family: "Cafe24Ohsquare";
+  margin-top: 76px;
+  font-size: 48px;
+}
+
+.description {
+  font-family: "Cafe24Ohsquare";
+  margin-top: 44px;
+  font-size: 25px;
+}
+
+.static-lang-button {
+  color: #fcb42b;
+  font-size: 22px;
+  cursor: pointer;
+  outline: none;
+}
+
+.static-lang-button.active {
+  /* background-color: #fcb42b; */
+  color: white;
+}
+
+.static-lang-button:hover {
+  /* background-color: #fcb42b; */
+  color: white;
+}
+
+/* 모바일용 레이아웃 설정 */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text {
+    padding: 20px 0;
+  }
+}
+
+/* 큰 화면에서의 폰트 크기 조정 */
+@media screen and (min-width: 769px) {
+  body {
+    font-size: 1.2em;
+  }
+
+  main {
+    font-size: 1.5em;
+  }
+
+  footer {
+    font-size: 1.2em;
+  }
+}
