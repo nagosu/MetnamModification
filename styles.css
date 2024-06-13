@@ -62,6 +62,8 @@ main {
   background-color: white;
   overflow-y: auto; /* 세로 스크롤 활성화 */
   max-height: 520px; /* 최대 높이를 설정하여 스크롤 활성화 */
+  width: 100%; /* 너비를 100%로 설정 */
+  box-sizing: border-box; /* 패딩과 보더를 너비에 포함 */
 }
 
 .tabs {
@@ -148,16 +150,23 @@ main {
 }
 
 .image {
+  background-image: url("./images/mobile/mock_up_background.png");
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the image covers the entire container */
+  background-position: top center; /* Center the background image */
   position: relative;
-  max-width: 416px;
   width: 100%; /* 이미지 클래스가 가득 차도록 설정 */
+  height: 100vh; /* 전체 화면 높이 */
+  max-width: 416px;
   overflow: hidden; /* 팝업이 이미지를 벗어나지 않도록 설정 */
+  z-index: 1; /* Ensure the image is behind the header */
 }
 
 .image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
+  object-fit: contain; /* 비율을 유지하며 이미지를 컨테이너에 맞춤 */
 }
 
 .text {
@@ -336,6 +345,20 @@ ul {
   font-size: 25px;
 }
 
+.logo {
+  margin-top: 76px;
+  width: 190px;
+}
+
+.store-logo {
+  width: 221px;
+}
+
+.row-store-logo {
+  margin-top: 114px;
+  gap: 33px;
+}
+
 .static-lang-button {
   color: #fcb42b;
   font-size: 22px;
@@ -353,29 +376,104 @@ ul {
   color: white;
 }
 
+.header {
+  display: none;
+}
+
 /* 모바일용 레이아웃 설정 */
 @media screen and (max-width: 768px) {
+  main {
+    background-image: url("./images/mobile/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start; /* 좌측 정렬 */
+    align-items: center;
+    height: 100vh; /* 전체 화면 높이 */
+    padding: 0;
+    margin: 0;
+  }
+
   .container {
+    margin: 0;
     flex-direction: column;
     text-align: center;
   }
 
+  .image {
+    background-image: url("./images/mobile/mock_up_background.png");
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-position: top center; /* Center the background image */
+    position: relative;
+    width: 100%; /* 이미지 클래스가 가득 차도록 설정 */
+    max-width: 768px;
+    height: 1432px; /* 전체 화면 높이 */
+    overflow: hidden; /* 팝업이 이미지를 벗어나지 않도록 설정 */
+    margin-top: 80px; /* Add top margin to make space for the header */
+  }
+
+  .popup {
+    position: absolute; /* 절대 위치로 설정 */
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* 중앙 정렬 */
+    max-width: 552px;
+    max-height: 727px;
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    word-wrap: break-word; /* 긴 단어가 줄 바꿈되도록 설정 */
+    border-radius: 15px; /* 팝업 전체에 radius 설정 */
+    overflow: hidden; /* 내부 요소가 둥근 모서리 밖으로 나오지 않도록 설정 */
+  }
+
   .text {
-    padding: 20px 0;
-  }
-}
-
-/* 큰 화면에서의 폰트 크기 조정 */
-@media screen and (min-width: 769px) {
-  body {
-    font-size: 1.2em;
+    margin: 0;
+    align-items: center;
   }
 
-  main {
-    font-size: 1.5em;
+  .store-logo {
+    width: 190px;
   }
 
-  footer {
-    font-size: 1.2em;
+  .row-store-logo {
+    margin-top: 68px;
+    gap: 16px;
+  }
+
+  .logo {
+    margin-top: 76px;
+    width: 190px;
+  }
+
+  .title {
+    font-family: "Cafe24Ohsquare";
+    margin-top: 70px;
+    font-size: 37px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .description {
+    font-family: "Cafe24Ohsquare";
+    margin-top: 34px;
+    font-size: 19px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .space-between {
+    display: none;
+  }
+
+  .header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between; /* 요소를 좌우로 배치 */
+    width: 100%;
+    position: absolute; /* Ensure the header is positioned at the top */
+    top: 0; /* Position the header at the top of the page */
   }
 }
