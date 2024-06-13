@@ -1,4 +1,210 @@
 // scripts.js
+const data = {
+  id: 2699,
+  latitude: 37.554643299999995,
+  longitude: 126.93054939999999,
+  deleted: false,
+  place_id: "Youtube_295",
+  type: "Establishment",
+  full_address: "대한민국 서울특별시 마포구 서강로9길 60",
+  display_address: "마포구 서강로9길 산울림1992",
+  place_name: "산울림1992",
+  country: 1,
+  administrative_area_level_1: "서울특별시",
+  administrative_area_level_2: null,
+  administrative_area_level_3: null,
+  administrative_area_level_4: null,
+  administrative_area_level_5: null,
+  locality: null,
+  sublocality_level_1: "마포구",
+  sublocality_level_2: null,
+  sublocality_level_3: null,
+  sublocality_level_4: "서강로9길",
+  sublocality_level_5: null,
+  premise: null,
+  created_at: "2024-06-10T02:14:01.000Z",
+  updated_at: "2024-06-10T02:14:04.000Z",
+  place_image: null,
+  country_code: "KR",
+  info: {
+    ko: {
+      placeName: "산울림1992",
+      address: "서울 마포구 서강로9길 60 산울림1992",
+      type: "술 & 요리",
+      openHours: [
+        "월 정기휴무 (매주 월요일)",
+        "화 17:00 - 24:00, 22:40 라스트오더",
+        "수 17:00 - 24:00, 22:40 라스트오더",
+        "목 17:00 - 24:00, 22:40 라스트오더",
+        "금 17:00 - 01:00, 23:40 라스트오더",
+        "토 17:00 - 01:00, 23:40 라스트오더",
+        "일 16:00 - 24:00, 22:40 라스트오더",
+      ],
+      menus: [
+        {
+          imageUrl: null,
+          name: "한국청주50여종",
+          description: "메뉴판을 참조하세요",
+          price: "7,000",
+        },
+        {
+          imageUrl: null,
+          name: "한국소주150여종",
+          description: "메뉴판을 참조하세요",
+          price: "8,000",
+        },
+        {
+          imageUrl: null,
+          name: "황금보리",
+          description: null,
+          price: "17,000",
+        },
+        {
+          imageUrl: null,
+          name: "안동소주",
+          description: null,
+          price: "22,000",
+        },
+        {
+          imageUrl: null,
+          name: "이강주",
+          description: null,
+          price: "19,000",
+        },
+      ],
+      editorialSummary: "홍대에서 막걸리와 해물파전이 맛있는 전통주점이에요.",
+      recommandFood: "두부김치, 치즈감자전, 떡구이",
+    },
+    en: {
+      placeName: "Sanullim 1992",
+      pronoun: "Sanullim 1992",
+      address: "60 Seogang-ro 9-gil, Mapo-gu, Seoul",
+      type: "Bistro Pub",
+      openHours: [
+        "Mon (Regular Holiday)",
+        "Tue 17:00 - 24:00, 22:40 Last Order",
+        "Wed 17:00 - 24:00, 22:40 Last Order",
+        "Thu 17:00 - 24:00, 22:40 Last Order",
+        "Fri 17:00 - 01:00, 23:40 Last Order",
+        "Sat 17:00 - 01:00, 23:40 Last Order",
+        "Sun 16:00 - 24:00, 22:40 Last Order",
+      ],
+      menus: [
+        {
+          imageUrl: null,
+          name: "Over 50 Types of Korean Rice Wine",
+          description: "硫붾돱먯쓣 李몄“섏꽭",
+          price: "7,000",
+        },
+        {
+          imageUrl: null,
+          name: "Over 150 Types of Korean Soju",
+          description: "硫붾돱먯쓣 李몄“섏꽭",
+          price: "8,000",
+        },
+        {
+          imageUrl: null,
+          name: "Golden Barley",
+          description: null,
+          price: "17,000",
+        },
+        {
+          imageUrl: null,
+          name: "Andong Soju",
+          description: null,
+          price: "22,000",
+        },
+        {
+          imageUrl: null,
+          name: "Igangju",
+          description: null,
+          price: "19,000",
+        },
+      ],
+      editorialSummary:
+        "A traditional bar in Hongdae famous for its makgeolli (rice wine) and seafood pancakes.",
+      recommandFood: "Tofu Kimchi, Cheese Potato Pancake, Rice Cake",
+    },
+    openHoursTimeOffset: 540,
+    original_lang: "ko",
+    youtube_channel: "풍자",
+    youtube_url: "https://youtu.be/Ame-nCgZh64",
+    rating: 0,
+    userRatingCount: 0,
+    photos: [
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/1_1717985640712.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/2_1717985640936.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/3_1717985641108.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/4_1717985641239.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/5_1717985641438.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/6_1717985641558.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/7_1717985641677.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/8_1717985641809.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/9_1717985641939.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/10_1717985642139.jpg",
+    ],
+    menu_board_photos: [
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/1_1717985642440.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/2_1717985642586.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/3_1717985642832.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/4_1717985642957.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/5_1717985643127.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/6_1717985643290.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/7_1717985643412.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/8_1717985643563.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/9_1717985643670.jpg",
+      "https://s3.ap-northeast-2.amazonaws.com/metnam.contents/images/2699/10_1717985643883.jpg",
+    ],
+    original: {
+      placeName: "산울림1992",
+      address: "서울 마포구 서강로9길 60 산울림1992",
+      type: "술 & 요리",
+      openHours: [
+        "월 정기휴무 (매주 월요일)",
+        "화 17:00 - 24:00, 22:40 라스트오더",
+        "수 17:00 - 24:00, 22:40 라스트오더",
+        "목 17:00 - 24:00, 22:40 라스트오더",
+        "금 17:00 - 01:00, 23:40 라스트오더",
+        "토 17:00 - 01:00, 23:40 라스트오더",
+        "일 16:00 - 24:00, 22:40 라스트오더",
+      ],
+      menus: [
+        {
+          imageUrl: null,
+          name: "한국청주50여종",
+          description: "메뉴판을 참조하세요",
+          price: "7,000",
+        },
+        {
+          imageUrl: null,
+          name: "한국소주150여종",
+          description: "메뉴판을 참조하세요",
+          price: "8,000",
+        },
+        {
+          imageUrl: null,
+          name: "황금보리",
+          description: null,
+          price: "17,000",
+        },
+        {
+          imageUrl: null,
+          name: "안동소주",
+          description: null,
+          price: "22,000",
+        },
+        {
+          imageUrl: null,
+          name: "이강주",
+          description: null,
+          price: "19,000",
+        },
+      ],
+      editorialSummary: "홍대에서 막걸리와 해물파전이 맛있는 전통주점이에요.",
+      recommandFood: "두부김치, 치즈감자전, 떡구이",
+    },
+  },
+};
 
 const tempStore = {
   ko: {
@@ -221,10 +427,11 @@ scrollContainer.addEventListener("wheel", (e) => {
 
 const fetchData = async () => {
   try {
-    const response = await fetch("http://192.168.123.109:1337/v2/places/2699"); // 여기에 실제 API URL을 입력하세요.
-    const data = await response.json();
+    // const data = "./respons.json";
+    // const response = await fetch("http://192.168.123.109:1337/v2/places/2699"); // 여기에 실제 API URL을 입력하세요.
+    // const data = await response.json();
 
-    console.log("data", data);
+    // console.log("data", JSON.stringify(data, null, 4));
 
     const placeNameKo = data.info.ko.placeName;
     const placeNameEn = data.info.en.placeName;
