@@ -225,6 +225,8 @@ const tempStore = {
     그래서 맛남을 만들었고, 여러분의 의견을 기다립니다.<br />
     맛집도 같이가고, 입맛 맞는 친구들도 만들어봐요!<br /><br />
     외국 친구들과 맛난 식사도 가능!<br />동네 & 해외 맛친 모두 함께하는, 맛남`,
+    mobileTitle: "입맛취저 친구들과,<br /> 부담없는 맛집여행!",
+    mobileDescription: `가끔은, 근처 친구들과 식사나 커피도<br />낭만있지 않을까 생각했어요!<br />그래서 맛남을 만들었고,<br />여러분의 의견을 기다립니다.<br /><br />맛집도 같이가고,<br />입맛 맞는 친구들도 만들어봐요!<br /><br />외국 친구들과 맛난 식사도 가능!<br />동네 & 해외 맛친 모두 함께하는, 맛남`,
   },
   en: {
     placeName: "Place Name",
@@ -240,12 +242,16 @@ const tempStore = {
     tab_map: "Map",
     button: "Join MealMeet",
     title: "Meetup for Foodies Worldwide",
-    description: `Could liking the same foods spark more joyful connections?<br />
-With Us, it's about shared moments<br />
+    description: `Could liking the same foods spark more joyful connections?<br />With Us, it's about shared moments<br />
 After all, great friendships often begin with nice drink and food<br /><br />
 Now, start by sharing your favourite menu<br />
 A delightful bond begins from a tasty moment<br />
 The beginning of a tasty friendship, MealMeet`,
+    mobileTitle: "Meetup for Foodies<br /> Worldwide",
+    mobileDescription: `Could liking the same foods spark<br />more joyful connections?<br />With Us, it's about shared moments<br />After all, great friendships often<br /> begin with nice drink and food<br />
+Now, start by sharing your<br /> favourite menu<br />
+A delightful bond begins<br /> from a tasty moment<br />The beginning of a tasty friendship,<br />
+MealMeet`,
   },
 };
 
@@ -271,6 +277,7 @@ const openTab = (event, tabName) => {
 };
 
 const switchLang = (button, lang) => {
+  currentLang = lang; // 현재 언어 업데이트
   // 모든 버튼에서 active 클래스 제거
   const buttons = document.querySelectorAll(".lang-button");
   buttons.forEach((btn) => btn.classList.remove("active"));
@@ -328,15 +335,19 @@ const switchLang = (button, lang) => {
 };
 
 const switchLangStaticContent = (button, lang) => {
-  const title = tempStore[lang].title;
-  const description = tempStore[lang].description;
+  currentLang = lang; // 현재 언어 업데이트
+  const isMobile = window.innerWidth <= 768;
+  const title = isMobile ? tempStore[lang].mobileTitle : tempStore[lang].title;
+  const description = isMobile
+    ? tempStore[lang].mobileDescription
+    : tempStore[lang].description;
 
   const elements = document.querySelectorAll("[static-translate]");
   elements.forEach((el) => {
     const key = el.getAttribute("static-translate");
 
     if (key === "title") {
-      el.textContent = title;
+      el.innerHTML = title;
     } else if (key === "description") {
       el.innerHTML = description;
     }
@@ -380,7 +391,27 @@ const initMap = async (lat, lng, placeName, address) => {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".tablink").click();
   fetchData();
+  handleResize(); // 페이지 로드 시 크기 조정 처리
+  window.addEventListener("resize", handleResize); // 창 크기 조정 시 크기 조정 처리
 });
+
+let currentLang = "ko"; // 현재 언어를 저장할 변수 추가
+
+const handleResize = () => {
+  const isMobile = window.innerWidth <= 768;
+  const titleElement = document.querySelector("[static-translate='title']");
+  const descriptionElement = document.querySelector(
+    "[static-translate='description']"
+  );
+
+  if (isMobile) {
+    titleElement.innerHTML = tempStore[currentLang].mobileTitle;
+    descriptionElement.innerHTML = tempStore[currentLang].mobileDescription;
+  } else {
+    titleElement.innerHTML = tempStore[currentLang].title;
+    descriptionElement.innerHTML = tempStore[currentLang].description;
+  }
+};
 
 const extractVideoId = (url) => {
   const regex =
